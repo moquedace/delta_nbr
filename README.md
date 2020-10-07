@@ -93,7 +93,7 @@ tm_shape(pantanal_lim) +
   tm_sf()
 ```
 <p align="center">
-<img src="limite_pantanal.jpg" width="600">
+<img src="limite_pantanal.jpg" width="400">
 </p>
 
 <p>&nbsp;</p>
@@ -184,7 +184,7 @@ nbr_2020_fig <- tm_shape(nbr_2020, raster.downsample = T) +
 tmap_arrange(nbr_2019_fig, nbr_2020_fig)
 ```
 <p align="center">
-<img src="nbr_sinu.jpg" width="600">
+<img src="nbr_sinu.jpg" width="500">
 </p>
 
 
@@ -203,7 +203,7 @@ tm_shape(delta_nbr, raster.downsample = T) +
   tm_layout(legend.outside = T)
 ```
 <p align="center">
-<img src="delta_nbr.fig.jpg" width="600">
+<img src="delta_nbr.fig.jpg" width="500">
 </p>
 
 <p>&nbsp;</p>
@@ -228,7 +228,7 @@ tm_shape(delta_nbr_mask, raster.downsample = F) +
   tm_layout(legend.outside = T)
 ```
 <p align="center">
-<img src="delta_nbr_mask.fig.jpg" width="600">
+<img src="delta_nbr_mask.fig.jpg" width="450">
 </p>
 
 <p>&nbsp;</p>
@@ -354,7 +354,7 @@ mapa_pronto
 ```
 
 <p align="center">
-<img src="mapa_nbr_pantanal.jpg" width="600">
+<img src="mapa_nbr_pantanal.jpg" width="700">
 </p>
 
 <p>&nbsp;</p>
