@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ## **Objetivo**
-Apresentar uma forma de avaliar o nível de severidade de queimadas com o $\Delta$ *Normalized Burn Ratio* (NBR) em ambiente R
+Calcular e espacializar o nível de severidade de queimadas com o Δ *Normalized Burn Ratio* (NBR) em ambiente R
 
 ## ***Normalized Burn Ratio* (NBR)**
 É um índice derivado das bandas de infravermelho próximo (NIR) e infravermelho médio (SWIR) (Figura 1), que constitui uma técnica de estimar o nível de severidade do fogo, potencialmente capaz de quantificar alterações que ocorrem na vegetação e no solo causadas pelo fogo.
@@ -14,21 +14,22 @@ Apresentar uma forma de avaliar o nível de severidade de queimadas com o $\Delt
 <p align="center">
 <img src="https://i.ibb.co/zPWvvJQ/grafico.jpg" width="700">
 </p>
+
 **Figura 1.** Curvas de resposta espectral. (Adaptadodo do Serviço Florestal dos EUA)
 
 As mudanças decorrentes após um incêndio provocam modificações no espectro eletromagnético, pelo fato do fogo consumir a vegetação e destruir a clorofila, deixando solo descoberto, além de carbonizar as raízes e alterar a umidade relativa do solo. As transformações no espectro consistem em aumento na região do visível e do infravermelho médio e, na diminuição na região próxima ao infravermelho.
 
 Nem sempre é fácil mapear essas mudanças usando métodos tradicionais, principalmente quando áreas afetadas são grandes, tendo topografia complexa e encostas íngremes, dificultando acessibilidade.Diante disso o emprego de ferramentas de sensoriamento remoto, como o NBR, facilitam o monitoramento de áreas queimadas e avaliação da severidade do fogo.
 
-Salienta-se que, a determinação do perímetro do incêndio e a distribuição dos níveis de severidade em seu interior são importantes para o planejamento da restauração de áreas afetadas, assim como para análise dos efeitos do fogo na sucessão da vegetação pós-fogo. O índice é calculado conforme a equação $NBR=\frac{NIR-SWIR}{NIR+SWIR}$.
+Salienta-se que, a determinação do perímetro do incêndio e a distribuição dos níveis de severidade em seu interior são importantes para o planejamento da restauração de áreas afetadas, assim como para análise dos efeitos do fogo na sucessão da vegetação pós-fogo. O índice é calculado conforme a equação NBR=(NIR-SWIR)/(NIR+SWIR).
 
 ### Área de exemplo
 Utilizaremos como exemplo para este tutorial o bioma brasileiro Pantanal, que este ano a intensidade de focos de calor observada é sem precedentes. Quase que a totalidade desses focos se tratam de queimadas criminosas, especialmente para limpeza de pastagens oriundas de desmatamento ilegal ([PrevFogo](https://ecoa.org.br/as-6-causas-principais-da-tragedia-dos-incendios-no-pantanal/)).
 
-Devido a grande extensão territorial do bioma Pantanal, utilizaremos imagens oriundas do produto do espectrorradiômetro de imagem de resolução moderada (MODIS) Terra MOD09A1 Versão 6 com resolução espacial de 500 metros. Para o cálculo do NBR serão utilizadas as bandas 2 e 6 de acordo com a equação $NBR_{MODIS}=\frac{B_2-B_6}{B_2+B_6}$
+Devido a grande extensão territorial do bioma Pantanal, utilizaremos imagens oriundas do produto do espectrorradiômetro de imagem de resolução moderada (MODIS) Terra MOD09A1 Versão 6 com resolução espacial de 500 metros. Para o cálculo do NBR serão utilizadas as bandas 2 e 6 de acordo com a equação NBR MODIS=(B2-B6)(B2+B6}
 
-### $\Delta$ *Normalized Burn Ratio* (NBR)
-O índice é sensível a umidade, dessa forma, para evitar que áreas com baixa umidade como pastagens degradadas sejam contabilizadas como áreas queimadas, utilizar o delta $\Delta$NBR anula esse efeito. A utilização as bandas de imagens capturadas em situação pré-fogo e situação pós fogo, possibilita atenuação da precisão de inferência do índice, para áreas que de fato sofreram queimadas. O cálculo do índice será realizado conforme equação $\Delta NBR={NBR_{2019}}-{NBR_{2020}}$
+### Δ *Normalized Burn Ratio* (NBR)
+O índice é sensível a umidade, dessa forma, para evitar que áreas com baixa umidade como pastagens degradadas sejam contabilizadas como áreas queimadas, utilizar o delta Δ NBR anula esse efeito. A utilização as bandas de imagens capturadas em situação pré-fogo e situação pós fogo, possibilita atenuação da precisão de inferência do índice, para áreas que de fato sofreram queimadas. O cálculo do índice será realizado conforme equação Δ NBR=(NBR 2019)-(NBR 2020)
 
 <p>&nbsp;</p>
 
@@ -163,10 +164,7 @@ $NBR_{MODIS}=\frac{B_2-B_6}{B_2+B_6}$
 nbr_2019 <- (b2_2019_mosaico - b6_2019_mosaico) / (b2_2019_mosaico + b6_2019_mosaico)
 ```
 
-Calculando *Normalized Burn Ratio* (NBR) para 2020
-$NBR=\frac{NIR-SWIR}{NIR+SWIR}$
-ou
-$NBR_{MODIS}=\frac{B_2-B_6}{B_2+B_6}$
+Calculando *Normalized Burn Ratio* (NBR) para 2020 NBR=(NIR-SWIR)/(NIR+SWIR) ou NBR MODIS=(B2-B6)/(B2+B6)
 ```{r message=FALSE}
 nbr_2020 <- (b2_2020_mosaico - b6_2020_mosaico) / (b2_2020_mosaico + b6_2020_mosaico)
 ```
@@ -188,15 +186,12 @@ tmap_arrange(nbr_2019_fig, nbr_2020_fig)
 </p>
 
 
-Calculando
-$\Delta$
-*Normalized Burn Ratio* (NBR)
-$\Delta NBR={NBR_{2019}}-{NBR_{2020}}$
+Calculando Δ *Normalized Burn Ratio* (NBR) Δ NBR=(NBR 2019)-(NBR 2020)
 ```{r message=FALSE}
 delta_nbr <- nbr_2019 - nbr_2020
 ```
 
-Visualizando o $\Delta$NBR
+Visualizando o Δ NBR
 ```{r message=FALSE, fig.width=10, fig.height=4, fig.align='center'}
 tm_shape(delta_nbr, raster.downsample = T) +
   tm_raster(midpoint = NA, style = "fisher") +
@@ -208,20 +203,20 @@ tm_shape(delta_nbr, raster.downsample = T) +
 
 <p>&nbsp;</p>
 
-#### Ajustando $\Delta$NBR
-Reprojetando $\Delta$NBR
+#### Ajustando Δ NBR
+Reprojetando Δ NBR
 ```{r message=FALSE, warning=FALSE}
 delta_nbr <- projectRaster(delta_nbr, crs = crs(pantanal_lim))
 ```
 
-Recortando $\Delta$NBR para extensão do Pantanal
+Recortando Δ NBR para extensão do Pantanal
 ```{r message=FALSE, warning=FALSE}
 delta_nbr_mask <- delta_nbr %>% 
   crop(pantanal_lim) %>% 
   mask(pantanal_lim)
 ```
 
-Visualizando o $\Delta$NBR recortado
+Visualizando o Δ NBR recortado
 ```{r message=FALSE, fig.width=10, fig.height=4, fig.align='center'}
 tm_shape(delta_nbr_mask, raster.downsample = F) +
   tm_raster(midpoint = NA, style = "fisher", palette = "-RdYlGn") +
@@ -233,7 +228,7 @@ tm_shape(delta_nbr_mask, raster.downsample = F) +
 
 <p>&nbsp;</p>
 
-#### Reclassificando valores $\Delta$NBR
+#### Reclassificando valores Δ NBR
 Categorias propostas pelo [USGS](https://burnseverity.cr.usgs.gov/pdfs/LAv4_BR_CheatSheet.pdf)
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
@@ -252,7 +247,11 @@ categ_queima %>%
   kable(escape = F, align = "c", col.names = c("$\\Delta$ NBR", "Categoria"), caption = "**Tabela 1 - Distribuição dos intervalos $\\Delta$ NBR de acordo com a categoria de severidade da queimada **") %>%
   kable_styling(bootstrap_options = c("striped", "hover", "bordered"), full_width = T)
 ```
-[Fonte: Adaptado de [KARL, 2012](https://wiki.landscapetoolbox.org/doku.php/remote_sensing_methods:normalized_burn_ratio)]{style="float:right"}
+
+<p align="center">
+<img src="tabela.jpg" width="500">
+</p>
+Fonte: Adaptado de [KARL, 2012](https://wiki.landscapetoolbox.org/doku.php/remote_sensing_methods:normalized_burn_ratio)
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
