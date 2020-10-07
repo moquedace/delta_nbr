@@ -92,6 +92,9 @@ Visualizando os limites
 tm_shape(pantanal_lim) +
   tm_sf()
 ```
+<p align="center">
+<img src="limite_pantanal.jpg" width="600">
+</p>
 
 <p>&nbsp;</p>
 
@@ -180,6 +183,10 @@ nbr_2020_fig <- tm_shape(nbr_2020, raster.downsample = T) +
 
 tmap_arrange(nbr_2019_fig, nbr_2020_fig)
 ```
+<p align="center">
+<img src="nbr_sinu.jpg" width="600">
+</p>
+
 
 Calculando
 $\Delta$
@@ -195,6 +202,9 @@ tm_shape(delta_nbr, raster.downsample = T) +
   tm_raster(midpoint = NA, style = "fisher") +
   tm_layout(legend.outside = T)
 ```
+<p align="center">
+<img src="delta_nbr.fig.jpg" width="600">
+</p>
 
 <p>&nbsp;</p>
 
@@ -217,6 +227,9 @@ tm_shape(delta_nbr_mask, raster.downsample = F) +
   tm_raster(midpoint = NA, style = "fisher", palette = "-RdYlGn") +
   tm_layout(legend.outside = T)
 ```
+<p align="center">
+<img src="delta_nbr_mask.fig.jpg" width="600">
+</p>
 
 <p>&nbsp;</p>
 
@@ -265,6 +278,9 @@ Visualizando distribuição das classes
 ```{r message=FALSE, fig.width=10, fig.height=5, fig.align='center'}
 hist(reclas_nbr)
 ```
+<p align="center">
+<img src="histograma.jpg" width="600">
+</p>
 
 Calculando área das classes
 ```{r message=FALSE, warning=FALSE}
@@ -283,8 +299,6 @@ n_classes <- c("Alta regeneração pós-fogo",
                "Queimada de alta gravidade")
 
 categ <- data.frame("categoria" = n_classes, "area_km_2" = area_classe[, 2])
-
-print(categ)
 ```
 
 <p>&nbsp;</p>
@@ -338,6 +352,10 @@ mapa_pronto <- tm_shape(reclas_nbr, raster.downsample = F, bbox = bbox.pantanal)
 
 mapa_pronto
 ```
+
+<p align="center">
+<img src="mapa_nbr_pantanal.jpg" width="600">
+</p>
 
 <p>&nbsp;</p>
 
