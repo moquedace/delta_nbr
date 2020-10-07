@@ -345,7 +345,7 @@ mapa_pronto
 ```
 
 <p align="center">
-<img src="mapa_nbr_pantanal.jpg" width="700">
+<img src="mapa_nbr_pantanal.jpeg" width="700">
 </p>
 
 <p>&nbsp;</p>
