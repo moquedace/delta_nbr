@@ -248,7 +248,8 @@ categ_queima %>%
 <p align="center">
 <img src="tabela.png" width="500">
 </p>
-Fonte: Adaptado de [USGS](https://burnseverity.cr.usgs.gov/pdfs/LAv4_BR_CheatSheet.pdf)
+
+Fonte: Adaptado de [KARL, 2012](https://wiki.landscapetoolbox.org/doku.php/remote_sensing_methods:normalized_burn_ratio)
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
