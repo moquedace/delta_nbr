@@ -26,7 +26,7 @@ Salienta-se que, a determinação do perímetro do incêndio e a distribuição 
 ### Área de exemplo
 Utilizaremos como exemplo para este tutorial o bioma brasileiro Pantanal, que este ano a intensidade de focos de calor observada é sem precedentes. Quase que a totalidade desses focos se tratam de queimadas criminosas, especialmente para limpeza de pastagens oriundas de desmatamento ilegal ([PrevFogo](https://ecoa.org.br/as-6-causas-principais-da-tragedia-dos-incendios-no-pantanal/)).
 
-Devido a grande extensão territorial do bioma Pantanal, utilizaremos imagens oriundas do produto do espectrorradiômetro de imagem de resolução moderada (MODIS) Terra MOD09A1 Versão 6 com resolução espacial de 500 metros. Para o cálculo do NBR serão utilizadas as bandas 2 e 6 de acordo com a equação NBR MODIS=(B2-B6)(B2+B6}
+Devido a grande extensão territorial do bioma Pantanal, utilizaremos imagens oriundas do produto do espectrorradiômetro de imagem de resolução moderada (MODIS) Terra MOD09A1 Versão 6 com resolução espacial de 500 metros. Para o cálculo do NBR serão utilizadas as bandas 2 e 6 de acordo com a equação NBR MODIS=(B2-B6)/(B2+B6)
 
 ### Δ *Normalized Burn Ratio* (NBR)
 O índice é sensível a umidade, dessa forma, para evitar que áreas com baixa umidade como pastagens degradadas sejam contabilizadas como áreas queimadas, utilizar o delta Δ NBR anula esse efeito. A utilização as bandas de imagens capturadas em situação pré-fogo e situação pós fogo, possibilita atenuação da precisão de inferência do índice, para áreas que de fato sofreram queimadas. O cálculo do índice será realizado conforme equação Δ NBR=(NBR 2019)-(NBR 2020)
@@ -156,10 +156,7 @@ b6_2020_mosaico <- mosaic(list_raster[["2020.b6.1"]],
 <p>&nbsp;</p>
 
 #### *Normalized Burn Ratio* (NBR)
-Calculando *Normalized Burn Ratio* (NBR) para 2019
-$NBR=\frac{NIR-SWIR}{NIR+SWIR}$
-ou
-$NBR_{MODIS}=\frac{B_2-B_6}{B_2+B_6}$
+Calculando *Normalized Burn Ratio* (NBR) para 2019 NBR=(NIR-SWIR)/(NIR+SWIR) ou NBR MODIS=(B2-B6)/(B2+B6)
 ```{r message=FALSE}
 nbr_2019 <- (b2_2019_mosaico - b6_2019_mosaico) / (b2_2019_mosaico + b6_2019_mosaico)
 ```
@@ -251,7 +248,7 @@ categ_queima %>%
 <p align="center">
 <img src="tabela.jpg" width="500">
 </p>
-Fonte: Adaptado de [KARL, 2012](https://wiki.landscapetoolbox.org/doku.php/remote_sensing_methods:normalized_burn_ratio)
+Fonte: Adaptado de [USGS](https://burnseverity.cr.usgs.gov/pdfs/LAv4_BR_CheatSheet.pdf)
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -353,7 +350,7 @@ mapa_pronto
 ```
 
 <p align="center">
-<img src="mapa_nbr_pantanal.jpg" width="700">
+<img src="mapa_nbr_pantanal.png" width="700">
 </p>
 
 <p>&nbsp;</p>
