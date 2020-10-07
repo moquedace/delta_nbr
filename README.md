@@ -242,7 +242,7 @@ categ_queima %>%
 ```
 
 <p align="center">
-<img src="tabela.jpg" width="600">
+<img src="tabela.jpeg" width="600">
 </p>
 
 Fonte: Adaptado de [KARL, 2012](https://wiki.landscapetoolbox.org/doku.php/remote_sensing_methods:normalized_burn_ratio)
@@ -345,7 +345,7 @@ mapa_pronto
 ```
 
 <p align="center">
-<img src="mapa_nbr_pantanal.jpeg" width="700">
+<img src="mapa_nbr_pantanal.jpg" width="700">
 </p>
 
 <p>&nbsp;</p>
