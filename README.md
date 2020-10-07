@@ -246,7 +246,7 @@ categ_queima %>%
 ```
 
 <p align="center">
-<img src="tabela.jpg" width="500">
+<img src="tabela.png" width="500">
 </p>
 Fonte: Adaptado de [USGS](https://burnseverity.cr.usgs.gov/pdfs/LAv4_BR_CheatSheet.pdf)
 
