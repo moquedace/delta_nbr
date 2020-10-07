@@ -367,7 +367,7 @@ tmap_save(mapa_pronto, "../mapa/mapa_nbr_pantanal.jpg", dpi = 600, width = 12, h
 <p>&nbsp;</p>
 
 ### Vídeo tutorial
-<iframe width="600" height="337.5" src="https://www.youtube.com/embed/lr5bXEs0IbQ" frameborder="0" allowfullscreen></iframe>
+[<img src="thumb.jpg" width="600">](https://youtu.be/lr5bXEs0IbQ)
 
 <p>&nbsp;</p>
 
