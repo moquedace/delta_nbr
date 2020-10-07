@@ -198,8 +198,6 @@ tm_shape(delta_nbr, raster.downsample = T) +
 <img src="delta_nbr.fig.jpg" width="500">
 </p>
 
-<p>&nbsp;</p>
-
 #### Ajustando Δ NBR
 Reprojetando Δ NBR
 ```{r message=FALSE, warning=FALSE}
@@ -222,8 +220,6 @@ tm_shape(delta_nbr_mask, raster.downsample = F) +
 <p align="center">
 <img src="delta_nbr_mask.fig.jpg" width="450">
 </p>
-
-<p>&nbsp;</p>
 
 #### Reclassificando valores Δ NBR
 Categorias propostas pelo [USGS](https://burnseverity.cr.usgs.gov/pdfs/LAv4_BR_CheatSheet.pdf)
@@ -251,8 +247,6 @@ categ_queima %>%
 
 Fonte: Adaptado de [KARL, 2012](https://wiki.landscapetoolbox.org/doku.php/remote_sensing_methods:normalized_burn_ratio)
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 
 Criando `matrix` de classificação
 ```{r message=FALSE, warning=FALSE}
@@ -351,7 +345,7 @@ mapa_pronto
 ```
 
 <p align="center">
-<img src="mapa_nbr_pantanal.png" width="700">
+<img src="mapa_nbr_pantanal.jpg" width="700">
 </p>
 
 <p>&nbsp;</p>
