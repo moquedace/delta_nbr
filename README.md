@@ -18,17 +18,17 @@ Calcular e espacializar o nível de severidade de queimadas com o Δ *Normalized
 
 As mudanças decorrentes após um incêndio provocam modificações no espectro eletromagnético, pelo fato do fogo consumir a vegetação e destruir a clorofila, deixando solo descoberto, além de carbonizar as raízes e alterar a umidade relativa do solo. As transformações no espectro consistem em aumento na região do visível e do infravermelho médio e, na diminuição na região próxima ao infravermelho.
 
-Nem sempre é fácil mapear essas mudanças usando métodos tradicionais, principalmente quando áreas afetadas são grandes, tendo topografia complexa e encostas íngremes, dificultando acessibilidade.Diante disso o emprego de ferramentas de sensoriamento remoto, como o NBR, facilitam o monitoramento de áreas queimadas e avaliação da severidade do fogo.
+Nem sempre é fácil mapear essas mudanças usando métodos tradicionais, principalmente quando áreas afetadas são grandes, tendo topografia complexa e encostas íngremes, dificultando acessibilidade. Diante disso o emprego de ferramentas de sensoriamento remoto, como o NBR, facilitam o monitoramento de áreas queimadas e avaliação da severidade do fogo.
 
-Salienta-se que, a determinação do perímetro do incêndio e a distribuição dos níveis de severidade em seu interior são importantes para o planejamento da restauração de áreas afetadas, assim como para análise dos efeitos do fogo na sucessão da vegetação pós-fogo. O índice é calculado conforme a equação NBR=(NIR-SWIR)/(NIR+SWIR).
+Salienta-se que, a determinação do perímetro do incêndio e a distribuição dos níveis de severidade em seu interior são importantes para o planejamento da restauração de áreas afetadas, assim como para análise dos efeitos do fogo na sucessão da vegetação pós-fogo. O índice é calculado conforme a equação NBR = (NIR - SWIR) / (NIR + SWIR).
 
 ### Área de exemplo
-Utilizaremos como exemplo para este tutorial o bioma brasileiro Pantanal, que este ano a intensidade de focos de calor observada é sem precedentes. Quase que a totalidade desses focos se tratam de queimadas criminosas, especialmente para limpeza de pastagens oriundas de desmatamento ilegal ([PrevFogo](https://ecoa.org.br/as-6-causas-principais-da-tragedia-dos-incendios-no-pantanal/)).
+Utilizaremos como exemplo para este tutorial o bioma brasileiro Pantanal, que este ano (2020) a intensidade de focos de calor observada é sem precedentes. Quase que a totalidade desses focos se tratam de queimadas criminosas, especialmente para limpeza de pastagens oriundas de desmatamento ilegal ([PrevFogo](https://ecoa.org.br/as-6-causas-principais-da-tragedia-dos-incendios-no-pantanal/)).
 
-Devido a grande extensão territorial do bioma Pantanal, utilizaremos imagens oriundas do produto do espectrorradiômetro de imagem de resolução moderada (MODIS) Terra MOD09A1 Versão 6 com resolução espacial de 500 metros. Para o cálculo do NBR serão utilizadas as bandas 2 e 6 de acordo com a equação NBR MODIS=(B2-B6)/(B2+B6)
+Devido a grande extensão territorial do bioma Pantanal, utilizaremos imagens oriundas do produto do espectrorradiômetro de imagem de resolução moderada (MODIS) Terra MOD09A1 Versão 6 com resolução espacial de 500 metros. Para o cálculo do NBR serão utilizadas as bandas 2 e 6 de acordo com a equação NBR MODIS = (B2 - B6) / (B2 + B6)
 
 ### Δ *Normalized Burn Ratio* (NBR)
-O índice é sensível a umidade, dessa forma, para evitar que áreas com baixa umidade como pastagens degradadas sejam contabilizadas como áreas queimadas, utilizar o delta Δ NBR anula esse efeito. A utilização as bandas de imagens capturadas em situação pré-fogo e situação pós fogo, possibilita atenuação da precisão de inferência do índice, para áreas que de fato sofreram queimadas. O cálculo do índice será realizado conforme equação Δ NBR=(NBR 2019)-(NBR 2020)
+O índice é sensível a umidade, dessa forma, para evitar que áreas com baixa umidade como pastagens degradadas sejam contabilizadas como áreas queimadas, utilizar o delta Δ NBR anula esse efeito. A utilização de imagens capturadas em situação pré-fogo e situação pós fogo, atenua a precisão de inferência do índice, para áreas que de fato sofreram queimadas. O cálculo do índice será realizado conforme equação Δ NBR = (NBR 2019) - (NBR 2020)
 
 <p>&nbsp;</p>
 
@@ -155,12 +155,12 @@ b6_2020_mosaico <- mosaic(list_raster[["2020.b6.1"]],
 <p>&nbsp;</p>
 
 #### *Normalized Burn Ratio* (NBR)
-Calculando *Normalized Burn Ratio* (NBR) para 2019 NBR=(NIR-SWIR)/(NIR+SWIR) ou NBR MODIS=(B2-B6)/(B2+B6)
+Calculando *Normalized Burn Ratio* (NBR) para 2019 NBR = (NIR - SWIR) / (NIR + SWIR) ou NBR MODIS = (B2 - B6) / (B2 + B6)
 ```{r message=FALSE}
 nbr_2019 <- (b2_2019_mosaico - b6_2019_mosaico) / (b2_2019_mosaico + b6_2019_mosaico)
 ```
 
-Calculando *Normalized Burn Ratio* (NBR) para 2020 NBR=(NIR-SWIR)/(NIR+SWIR) ou NBR MODIS=(B2-B6)/(B2+B6)
+Calculando *Normalized Burn Ratio* (NBR) para 2020 NBR = (NIR - SWIR) / (NIR + SWIR) ou NBR MODIS = (B2 - B6) / (B2 + B6)
 ```{r message=FALSE}
 nbr_2020 <- (b2_2020_mosaico - b6_2020_mosaico) / (b2_2020_mosaico + b6_2020_mosaico)
 ```
@@ -182,7 +182,7 @@ tmap_arrange(nbr_2019_fig, nbr_2020_fig)
 </p>
 
 
-Calculando Δ *Normalized Burn Ratio* (NBR) Δ NBR=(NBR 2019)-(NBR 2020)
+Calculando Δ *Normalized Burn Ratio* (NBR) Δ NBR = (NBR 2019) - (NBR 2020)
 ```{r message=FALSE}
 delta_nbr <- nbr_2019 - nbr_2020
 ```
