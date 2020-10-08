@@ -165,12 +165,14 @@ f.nbr <- function(x, y){
 ```
 
 Calculando *Normalized Burn Ratio* (NBR) para 2019
+
 NBR = (NIR - SWIR) / (NIR + SWIR) ou NBR MODIS = (B2 - B6) / (B2 + B6)
 ```{r message=FALSE}
 nbr_2019 <- f.nbr(b2_2019_mosaico, b6_2019_mosaico)
 ```
 
 Calculando *Normalized Burn Ratio* (NBR) para 2020
+
 NBR = (NIR - SWIR) / (NIR + SWIR) ou NBR MODIS = (B2 - B6) / (B2 + B6)
 ```{r message=FALSE}
 nbr_2020 <- f.nbr(b2_2020_mosaico, b6_2020_mosaico)
