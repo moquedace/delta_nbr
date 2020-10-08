@@ -14,7 +14,7 @@ Calcular e espacializar o nível de severidade de queimadas com o Δ *Normalized
 <img src="https://i.ibb.co/zPWvvJQ/grafico.jpg" width="700">
 </p>
 
-**Figura 1.** Curvas de resposta espectral. (Adaptadodo do Serviço Florestal dos EUA)
+**Figura 1.** Curvas de resposta espectral. (Adaptado do Serviço Florestal dos EUA)
 
 As mudanças decorrentes após um incêndio provocam modificações no espectro eletromagnético, pelo fato do fogo consumir a vegetação e destruir a clorofila, deixando solo descoberto, além de carbonizar as raízes e alterar a umidade relativa do solo. As transformações no espectro consistem em aumento na região do visível e do infravermelho médio e, na diminuição na região próxima ao infravermelho.
 
