@@ -1,9 +1,8 @@
 ---
-title: "Tutorial Delta NBR"
-author: "Cássio Moquedace"
-date: "27/09/2020"
-output: html_document
+Título: "Tutorial - Δ Normalized Burn Ratio (NBR)"
+Autores: "Cássio Moquedace, Khaterine Martinez, Lara Lima, Rugana Imbana"
 ---
+
 
 ## **Objetivo**
 Calcular e espacializar o nível de severidade de queimadas com o Δ *Normalized Burn Ratio* (NBR) em ambiente R
