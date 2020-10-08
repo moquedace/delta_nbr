@@ -155,14 +155,25 @@ b6_2020_mosaico <- mosaic(list_raster[["2020.b6.1"]],
 <p>&nbsp;</p>
 
 #### *Normalized Burn Ratio* (NBR)
-Calculando *Normalized Burn Ratio* (NBR) para 2019 NBR = (NIR - SWIR) / (NIR + SWIR) ou NBR MODIS = (B2 - B6) / (B2 + B6)
+
+Criando função para cálculo da diferença normalizada
 ```{r message=FALSE}
-nbr_2019 <- (b2_2019_mosaico - b6_2019_mosaico) / (b2_2019_mosaico + b6_2019_mosaico)
+f.nbr <- function(x, y){
+  nbr <- (x - y) / (x + y)
+  return(nbr)
+}
 ```
 
-Calculando *Normalized Burn Ratio* (NBR) para 2020 NBR = (NIR - SWIR) / (NIR + SWIR) ou NBR MODIS = (B2 - B6) / (B2 + B6)
+Calculando *Normalized Burn Ratio* (NBR) para 2019
+NBR = (NIR - SWIR) / (NIR + SWIR) ou NBR MODIS = (B2 - B6) / (B2 + B6)
 ```{r message=FALSE}
-nbr_2020 <- (b2_2020_mosaico - b6_2020_mosaico) / (b2_2020_mosaico + b6_2020_mosaico)
+nbr_2019 <- f.nbr(b2_2019_mosaico, b6_2019_mosaico)
+```
+
+Calculando *Normalized Burn Ratio* (NBR) para 2020
+NBR = (NIR - SWIR) / (NIR + SWIR) ou NBR MODIS = (B2 - B6) / (B2 + B6)
+```{r message=FALSE}
+nbr_2020 <- f.nbr(b2_2020_mosaico, b6_2020_mosaico)
 ```
 
 Visualizando *Normalized Burn Ratio* (NBR) para 2019 e 2020
